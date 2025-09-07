@@ -45,6 +45,22 @@ public class Solution implements NumberRangeSummarizer{
             output.append(list.get(0));
             return output.toString();
         }
+        
+        int start = list.get(0);
+        int end = start;
+        boolean isSeq = false;
+
+        for (int i = 1; i < list.size(); i++) {
+            if (list.get(i) == end + 1) {
+                end = list.get(i);
+                isSeq = true;
+            }
+            else{
+                if (isSeq) {
+                    output.append(start).append("-").append(", ");
+                }
+            }
+        }
         return output.toString();
     }
     public static void main(String[] args) {
