@@ -58,9 +58,19 @@ public class Solution implements NumberRangeSummarizer{
             else{
                 if (isSeq) {
                     output.append(start).append("-").append(", ");
+                    isSeq = false;
                 }
+                else{output.append(start).append(", ");}
+                start = end = list.get(i);
             }
         }
+        if(isSeq){
+            output.append(start).append("-").append(end);
+        }
+        else{
+            output.append(start);
+        }
+
         return output.toString();
     }
     public static void main(String[] args) {

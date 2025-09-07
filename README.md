@@ -8,8 +8,9 @@ The summarizer collects integers from a comma-delimited string and outputs a com
 ## Example
 
 ```java
-Input:  "1,1,1,7,8,12,13,Mike,15,21,22,23,Mike,10000000"
-Output: "1, 7-8, 12-13, 15, 21-23, 10000000"
+// Sample Input: "1,3,6,7,8,12,13,14,15,21,22,23,24,31
+// Result: "1, 3, 6-8, 12-15, 21-24, 31"
+ 
 ```
 
 ---
