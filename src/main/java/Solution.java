@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
-import java.util.TreeSet;
 import numberrangesummarizer.NumberRangeSummarizer;
 
 public class Solution implements NumberRangeSummarizer{
@@ -33,15 +33,45 @@ public class Solution implements NumberRangeSummarizer{
     public String summarizeCollection(Collection<Integer> input){
         StringBuilder output = new StringBuilder();
 
-        if (input == null || input.isEmpty()) return "";
+        if (input == null || input.isEmpty()) {
+            System.out.println("Input cannot be empty.");
+            return output.toString();
+        }
+        List<Integer> list = new ArrayList<>(input);
 
-        // Remove duplicates and sort
-        TreeSet<Integer> sortedSet = new TreeSet<>(input);
-        List<Integer> numbers = new ArrayList<>(sortedSet);
+        Collections.sort(list);
 
-        StringBuilder sb = new StringBuilder();
+        if (list.size() == 1) {
+            output.append(list.get(0));
+            return output.toString();
+        }
         
-        return sb.toString();
+        int start = list.get(0);
+        int end = start;
+        boolean isSeq = false;
+
+        for (int i = 1; i < list.size(); i++) {
+            if (list.get(i) == end + 1) {
+                end = list.get(i);
+                isSeq = true;
+            }
+            else{
+                if (isSeq) {
+                    output.append(start).append("-").append(", ");
+                    isSeq = false;
+                }
+                else{output.append(start).append(", ");}
+                start = end = list.get(i);
+            }
+        }
+        if(isSeq){
+            output.append(start).append("-").append(end);
+        }
+        else{
+            output.append(start);
+        }
+
+        return output.toString();
     }
     public static void main(String[] args) {
         Solution sol = new Solution();
