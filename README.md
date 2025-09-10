@@ -1,6 +1,6 @@
 # Number Range Summarizer
 
-Implementation of the `NumberRangeSummarizer` interface in Java.  
+Implementation of the `NumberRangeSummarizer` interface in Java.
 The summarizer collects integers from a comma-delimited string and outputs a compact string where consecutive sequences are collapsed into ranges.
 
 ---
