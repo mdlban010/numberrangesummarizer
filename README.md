@@ -8,22 +8,12 @@ The implementation follows the `NumberRangeSummarizer` interface and is validate
 
 ##  Project Structure
 IMPACT/
-│── lib/
-│ └── junit-platform-console-standalone-1.13.2.jar
-│
-│── src/
-│ └── main/
-│ └── java/
-│ └── numberrangesummarizer/
-│ ├── NumberRangeSummarizer.java
-│ ├── Solution.java
-│ └── SolutionTest.java
-│
-└── README.md
 
-markdown
-Copy code
-
+    │── lib/ junit-platform-console-standalone-1.13.2.jar
+    │── src/main/java/numberrangesummarizer/NumberRangeSummarizer.java
+                ├── Solution.java
+                ├── SolutionTest.java
+    └── README.md
 ---
 
 ##  Setup Instructions
@@ -49,13 +39,18 @@ Open the project folder (`IMPACT/`) in VS Code.
 Alternatively, you can run from the terminal:
 ```bash
 javac -d out -cp "lib/*" src/main/java/numberrangesummarizer/*.java
+
 java -jar lib/junit-platform-console-standalone-1.13.2.jar --class-path out --scan-class-path
+
 Tests & Justification
+
 The tests are implemented in SolutionTest.java using JUnit 5.
-We test two core methods in Solution:
+Tested two core methods in Solution:
 
 1. collect(String input)
+
 Why test?
+
 This method parses a comma-separated string into a collection of integers. Errors here would break the summarizer.
 
 Tests cover:
@@ -69,7 +64,9 @@ Invalid tokens (letters, empty tokens) → skipped safely
 Handling of negatives and duplicates
 
 2. summarizeCollection(Collection<Integer> input)
+
 Why test?
+
 This method is the heart of the application — it compresses sorted integers into ranges.
 
 Tests cover:
@@ -101,11 +98,6 @@ Running the test suite should result in all tests passing.
 
 Example passing output in VS Code Test Explorer:
 
-sql
-Copy code
-✔ collect: trims tokens and keeps order of valid integers
-✔ summarizeCollection: merges consecutive ranges
-✔ summarizeCollection: mixed isolated and ranged values
 ...
 All 16 tests passed
  Notes
